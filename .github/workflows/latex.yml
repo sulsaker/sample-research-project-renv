@@ -1,0 +1,34 @@
+name: build-pdf
+
+on:
+  push:
+    paths:
+      - 'tex/**'
+      - '.github/workflows/latex.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-small
+            latexmk
+            biblatex
+            biber
+            latex-recommended
+            latex-extra
+            collection-fontsrecommended
+      - name: Build PDF
+        working-directory: tex
+        run: |
+          latexmk -pdf -interaction=nonstopmode -file-line-error main.tex
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdf
+          path: tex/main.pdf

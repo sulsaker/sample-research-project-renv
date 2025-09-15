@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build LaTeX (latexmk)",
+      "type": "shell",
+      "command": "latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -shell-escape main.tex",
+      "options": {
+        "cwd": "${workspaceFolder}/tex"
+      },
+      "problemMatcher": "$latex"
+    },
+    {
+      "label": "R: restore & run analysis",
+      "type": "shell",
+      "command": "Rscript -e \"options(repos=c(CRAN='https://cloud.r-project.org')); if (!requireNamespace('renv', quietly=TRUE)) install.packages('renv'); renv::restore(); source('R/analysis.R')\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Run Python analysis",
+      "type": "shell",
+      "command": "python python/analysis.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}

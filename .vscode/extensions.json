@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "James-Yu.latex-workshop",
+    "tecosaur.latex-utilities",
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "rstudio.r",
+    "eamodio.gitlens"
+  ]
+}
