@@ -1,3 +1,4 @@
+source("renv/activate.R")
 # Auto-activate/restore renv for this project
 if (!requireNamespace("renv", quietly = TRUE)) {
   install.packages("renv", repos = "https://cloud.r-project.org")
